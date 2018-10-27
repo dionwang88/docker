@@ -1,6 +1,17 @@
-FROM openjdk:8-jdk
+FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  git \
+  openjdk-8-jdk \
+  maven \
+  wget \
+  curl
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+  && apt-get install -y nodejs
 
 ARG user=jenkins
 ARG group=jenkins
